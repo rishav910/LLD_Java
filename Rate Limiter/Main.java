@@ -1,7 +1,7 @@
 
 public class Main {
     public static void main(String[] args) {
-        RateLimiterService service = new RateLimiterService();
+        RateLimiterService service = RateLimiterService.getInstance();
 
         service.registerUser("user_1", "sliding_window", 3, 5);
         service.registerUser("user_2", "token_bucket", 5, 10);
