@@ -29,7 +29,7 @@ public class LeakyBucketRateLimiter implements RateLimiter{
     private synchronized void leakRequests () {
         if (bucket.size() > 0) {
             bucket.remove();
-            System.out.println("Leaked 1 token");
+//            System.out.println("Leaked 1 token");
         }
     }
 

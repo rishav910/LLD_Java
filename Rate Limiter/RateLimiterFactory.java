@@ -8,6 +8,8 @@ public class RateLimiterFactory {
                                 break;
             case "sliding_window": rateLimiter = new SlidingWindowRateLimiter(maxRequests, windowSizeMS);
                                 break;
+            case "fixed_window": rateLimiter = new FixedWindowRateLimiter(maxRequests, windowSizeMS);
+                                break;
             default: throw new IllegalArgumentException("Unsupported type");
         }
         return rateLimiter;
