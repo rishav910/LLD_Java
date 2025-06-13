@@ -42,7 +42,7 @@ public class Main {
             threads.get(i).start();
         }
 
-        service.cancelTask("HLD", "Revise HLD concepts");
+        service.cancelTask(t3);
 
         for (int i=0; i<3; i++) {
             Thread t = threads.get(i);

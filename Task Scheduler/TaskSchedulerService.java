@@ -11,20 +11,19 @@ public class TaskSchedulerService {
     }
 
     // Cancel a task
-    public void cancelTask (String title, String description) {
-        Task task = new Task(0, title, description);
-        handler.cancelTask(task);
+    public void cancelTask (int taskId) {
+        handler.cancelTask(taskId);
     }
 
     // Update a task
     // 1. Update task title, description
-    public void updateTask (Task t, String title, String description) {
-        handler.updateTask(t, title, description);
+    public void updateTask (int taskId, String title, String description) {
+        handler.updateTask(taskId, title, description);
     }
 
     // 2. Update task status
-    public void updateTask (Task t, TaskStatus status) {
-        handler.updateTask(t, status);
+    public void updateTask (int taskId, TaskStatus status) {
+        handler.updateTask(taskId, status);
     }
 
     public void showTasks () {
