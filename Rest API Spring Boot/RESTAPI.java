@@ -25,6 +25,15 @@ import java.util.List;
             public void func (@PathVariable int id, @RequestBody Product p)
        -> {id} from URL is assigned to variable 'id'. (If type conversion is possible)
        -> @RequestBody assigns JSON to Product 'p'.
+
+
+       @RequestParam
+       Used to search from endpoint queries
+       looks like: /about/search?par1=hello&par2=90
+       @GetMapping
+       void method (@RequestParam String par1, @RequestParam(value="par2") int val) {}
+       Without @RequestParam(value) -> name should match: par1 = par1 (in URL)
+       With @RequestParam(value="par2") -> next variable can be named according to us
  */
 @RestController
 @RequestMapping("/about")
@@ -38,9 +47,22 @@ public class RESTAPI {
         return products;
     }
 
+    // Get - to search product using @RequestParam
+    // http://localhost:8080/about/search?name=iPhone&price=1700
+    @GetMapping("/search")
+    public Product searchProduct (@RequestParam String name, @RequestParam(value="price") int pr) {
+        for (Product product: products) {
+            if (product.getName().equals(name) && pr == product.getPrice()) {
+                return product;
+            }
+        }
+        return null;
+    }
+
     // POST - Add a new resource
     @PostMapping
     public void addProduct (@RequestBody Product p) {
+        System.out.println("hit here");
         products.add(p);
     }
 
